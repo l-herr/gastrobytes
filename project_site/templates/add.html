@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Add a Recipe</h2>
+<form action="{{ url_for('add') }}" method="post" enctype="multipart/form-data">
+  <p>Name:<br><input type="text" name="name" required></p>
+  <p>Ingredients (one per line):<br>
+  <textarea name="ingredients" rows="5" cols="40"></textarea></p>
+  <p>Steps (one per line):<br>
+  <textarea name="steps" rows="5" cols="40"></textarea></p>
+  <p>Image:<br><input type="file" name="image"></p>
+  <p><button type="submit">Save Recipe</button></p>
+</form>
+<p><a href="{{ url_for('index') }}">Cancel</a></p>
+{% endblock %}
+

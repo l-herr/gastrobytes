@@ -1,0 +1,242 @@
+@charset "utf-8";
+
+
+/* Author: Jesse Miller
+    Date: 11/17/2008 */
+
+
+
+html {
+   font-family: Verdana, Geneva, sans-serif;
+   font-size: 2vw;
+   min-height: 600px;
+}
+
+
+
+body {
+
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    color: black;
+    background: url(cookie.png) center no-repeat fixed;
+    background-size: auto 120vh;
+    min-height: 50vw;
+    background-color: rgba(92, 20, 8, 0.9);
+
+  }
+
+
+
+  header {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 5vw;
+    font-style: normal;
+    text-shadow: -3px 3px white;
+    width: 99%;
+    text-align: center;
+
+
+  }
+
+  .emoji {
+    font-size: 6vw;
+    text-shadow: 0px 0px rgb(247, 192, 90);
+
+  }
+
+  aside {
+
+    display: flex;
+    margin: 0px;
+    width: 100%;
+    font-size: 0%;
+    background-color: rgba(205, 208, 48, 0.05);
+    /*
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);*/
+    backdrop-filter: blur(1px);/*
+    height: 28.9vh; */
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style-type: none;
+    max-width: 65vw;
+}
+
+ul a:link, ul a:visited {
+    color: black;
+    text-decoration: none;
+
+}
+
+  li {
+    flex: 1;
+    font-size: 1.5vw;
+    width: 12vw;
+    text-align: center;
+    padding: 1.07vw 1.07vw 1.07vw 2.4vw;
+    margin: 0vh 1vw 0vh 1vw;
+    border: 0.11vh solid rgba(255, 255, 255, .2);
+    border-radius: 1.29vh;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.10);
+
+  }
+
+  li:hover, #searchbutton:hover {
+    background-color: rgba(0, 0, 0, 0.30);
+  }
+
+
+
+  h1 {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 4vw;
+    font-style: normal;
+    text-shadow: -3px 3px white;
+    font-weight: normal;
+
+  }
+
+  #mainWindow {
+
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    margin:5px;
+    background: linear-gradient(to top, rgba(245, 225, 157, 0.678) 30%, rgba(0, 0, 0, 0.1)); /* darkness level */
+    /* border: 1px solid rgba(255, 255, 255, .2); */
+    border-radius: 2.15vh;
+    /* box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.795); */
+    backdrop-filter: blur(1px);
+    height: fit-content;
+    width: 65vw;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+
+  }
+
+  #searchbutton a:link, #searchbutton a:visited{
+    color: white;
+    text-transform: uppercase;
+
+  }
+
+  #searchbutton {
+    background-color: rgba(208, 64, 48, 1);
+  }
+
+a#navicon {
+    display: none;
+}
+
+a {
+  margin: 0px;
+}
+
+
+
+
+
+/* below 480px */
+
+  @media only screen and (max-width: 480px) {
+    header {
+      font-size: 7vw;
+    }
+
+    .emoji {
+      font-size: 8vw;
+    }
+    #navtainer {
+        width: 60vw;
+    }
+    aside {
+       width: fit-content;
+       height:fit-content;
+
+    }
+
+    a#navicon {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+    }
+
+    aside nav ul{
+        display:none;
+    }
+
+
+
+    a#navicon:hover+ul, aside nav ul:hover {
+        display: block;
+     }
+
+     #mainWindow {
+        width: 95vw;
+     }
+
+
+  }
+
+  /* above 1201 */
+
+  @media only screen and (min-width: 1100px) {
+
+  /*#navigate li {
+    float: left;
+    margin-left: 2vw;
+    margin-right: 2vw;
+  }*/
+
+  aside {
+    height: fit-content;
+
+  }
+
+ #mainWindow {
+    width: clamp(300px, 65vw, 725px);
+  }
+
+   ul {
+    width: clamp(300px, 65vw, 725px);
+  }
+
+  li {
+    font-size: 16px;
+    width: 3px;
+    padding: 11.77px 11.77px 11.77px 26.4px;
+  }
+
+  header {
+    font-size: 55px;
+  }
+
+  .emoji {
+    font-size: 65px;
+  }
+
+
+  }
+
+
+  @media (min-aspect-ratio: 2/1) {
+  /* width is greater than or equal to height */
+
+    body {
+    background-size: 87vw auto;
+  }
+}
+

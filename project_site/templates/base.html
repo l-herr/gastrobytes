@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <title>Recipe Bytes</title>
+  <meta charset="utf-8" />
+<meta name="description" content="project">
+<meta name="keywords" content="HTML5 & CSS">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="{{ url_for('static', filename='b_styles.css') }}">
+</head>
+<body>
+   <div id="mainWindow">
+
+    <header><span class="emoji">&#x1F603;</span>Recipe Bytes</header>
+
+
+       <aside>
+    <nav>
+    <a id="navicon" href="#"><img src="navicon.png" alt="" /></a>
+    <ul id="navigate"><!--
+    --><li id="homebutton"> <a href="{{ url_for('index') }}">Home&#x1F3E0;</a></li><!--
+    --><li id="aboutbutton"> <a href="{{ url_for('add') }}">Add Recipe&#x1F36A;</a></li><!--
+    --><li id="searchbutton"> <a href="">Search&#128270;</a></li><!--
+    --><li id="classesbutton"> <a href="">Log Out&#x1F3C3;</a></li><!--
+    --></ul>
+    </nav>
+ </aside>
+  {% block content %}{% endblock %}
+</body>
+</html>
+
