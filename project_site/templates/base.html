@@ -17,12 +17,22 @@
        <aside>
     <nav>
     <a id="navicon" href="#"><img src="navicon.png" alt="" /></a>
-    <ul id="navigate"><!--
-    --><li id="homebutton"> <a href="{{ url_for('index') }}">Home&#x1F3E0;</a></li><!--
-    --><li id="aboutbutton"> <a href="{{ url_for('add') }}">Add Recipe&#x1F36A;</a></li><!--
-    --><li id="searchbutton"> <a href="">Search&#128270;</a></li><!--
-    --><li id="classesbutton"> <a href="">Log Out&#x1F3C3;</a></li><!--
-    --></ul>
+   <ul id="navigate">
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+
+    {% if session.get('user_id') %}
+        <li><a href="{{ url_for('add') }}">Add Recipe</a></li>
+
+        {% if session.get('role') == 'admin' %}
+            <li><a href="{{ url_for('admin_panel') }}">Admin Panel</a></li>
+        {% endif %}
+
+        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        <li><a href="{{ url_for('register') }}">Register</a></li>
+    {% endif %}
+</ul>
     </nav>
  </aside>
   {% block content %}{% endblock %}
