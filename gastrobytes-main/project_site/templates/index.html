@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if recipes %}
+
+<input type="text" id="recipe-search" placeholder="Search recipes..." style="margin-bottom: 20px; padding: 8px; width: 300px; font-size: 16px;">
+
+<div class="recipe-grid">
+
+    {% for r in recipes %}
+    <div class="recipe-card">
+        <div class="card-inner">
+
+            <!-- FRONT -->
+            <div class="card-front">
+    <h2 class="recipe-title">{{ r.name }}</h2>
+
+    <div class="card-content">
+        {% if r.image_filename %}
+        <img src="{{ url_for('uploaded_file', filename=r.image_filename) }}" class="recipe-image">
+        {% endif %}
+
+        <div class="ingredients-container">
+            <h3 class="ingredients-title">Ingredients:</h3>
+            <ul class="ingredients-list">
+                {% for i in r.ingredients %}
+                <li>{{ i }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+            <!-- BACK -->
+            <div class="card-back">
+                <h3>Instructions:</h3>
+                <ol>
+                    {% for s in r.steps %}
+                    <li>{{ s }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+
+        </div>
+
+        <!-- Actions -->
+        <div class="recipe-actions">
+            <form action="{{ url_for('delete', rid=r._id) }}" method="post">
+                <button type="submit" class="delete-btn" onclick="return confirm('Delete this recipe?')">Delete</button>
+            </form>
+            <a href="{{ url_for('edit', rid=r._id) }}" class="edit-btn">Edit</a>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+<script>
+const searchInput = document.getElementById('recipe-search');
+const recipeCards = document.querySelectorAll('.recipe-card');
+
+searchInput.addEventListener('input', () => {
+    const filter = searchInput.value.toLowerCase();
+
+    recipeCards.forEach(card => {
+        const title = card.querySelector('.recipe-title').textContent.toLowerCase();
+        if (title.includes(filter)) {
+            card.style.display = 'block';  // show card
+        } else {
+            card.style.display = 'none';   // hide card
+        }
+    });
+});
+</script>
+
+<script>
+    // Flip cards on click
+    document.querySelectorAll('.recipe-card').forEach(card => {
+        card.addEventListener('click', function() {
+            this.classList.toggle('flipped');
+        });
+    });
+</script>
+
+{% else %}
+<p>No recipes yet.</p>
+{% endif %}
+
+{% endblock %}
+
+

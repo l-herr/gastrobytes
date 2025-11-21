@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <title>Recipe Bytes</title>
+  <meta charset="utf-8" />
+<meta name="description" content="project">
+<meta name="keywords" content="HTML5 & CSS">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="{{ url_for('static', filename='b_styles.css') }}">
+</head>
+<body>
+   <div id="mainWindow">
+
+    <header><span class="emoji">&#x1F603;</span>Recipe Bytes</header>
+
+
+       <aside>
+    <nav>
+    <a id="navicon" href="#"><img src="navicon.png" alt="" /></a>
+   <ul id="navigate">
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+
+    {% if session.get('user_id') %}
+        <li><a href="{{ url_for('add') }}">Add Recipe</a></li>
+
+        {% if session.get('role') == 'admin' %}
+            <li><a href="{{ url_for('admin_panel') }}">Admin Panel</a></li>
+        {% endif %}
+
+        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+    {% else %}
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        <li><a href="{{ url_for('register') }}">Register</a></li>
+    {% endif %}
+</ul>
+    </nav>
+ </aside>
+  {% block content %}{% endblock %}
+</body>
+</html>
+

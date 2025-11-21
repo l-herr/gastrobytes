@@ -1,0 +1,524 @@
+@charset "utf-8";
+
+
+/* Author: Jesse Miller
+    Date: 11/17/2008 */
+
+
+
+html {
+   font-family: Verdana, Geneva, sans-serif;
+   font-size: 2vw;
+   min-height: 600px;
+}
+
+
+
+body {
+
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    color: black;
+    background: url(cookie.png) center no-repeat fixed;
+    background-size: auto 120vh;
+    min-height: 50vw;
+    background-color: rgba(92, 20, 8, 0.9);
+
+  }
+
+
+
+  header {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 5vw;
+    font-style: normal;
+    text-shadow: -3px 3px white;
+    width: 99%;
+    text-align: center;
+
+
+  }
+
+  .emoji {
+    font-size: 6vw;
+    text-shadow: 0px 0px rgb(247, 192, 90);
+
+  }
+
+  aside {
+
+    display: flex;
+    margin: 0px;
+    width: 100%;
+    font-size: 0%;
+    background-color: rgba(205, 208, 48, 0.05);
+    /*
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);*/
+    backdrop-filter: blur(1px);/*
+    height: 28.9vh; */
+  }
+
+  aside nav ul {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    max-width: 65vw;
+}
+
+ul a:link, ul a:visited {
+    color: black;
+    text-decoration: none;
+
+}
+
+  aside nav li {
+    flex: 1;
+    font-size: 1.5vw;
+    width: 12vw;
+    text-align: center;
+    padding: 1.07vw;
+    margin: 0 1vw;
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 1.29vh;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.10);
+}
+
+
+  aside nav li:hover,
+#searchbutton:hover {
+    background-color: rgba(0, 0, 0, 0.30);
+}
+
+
+
+  h1 {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 4vw;
+    font-style: normal;
+    text-shadow: -3px 3px white;
+    font-weight: normal;
+
+  }
+
+  #mainWindow {
+
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: center;
+    margin:5px;
+    background: linear-gradient(to top, rgba(245, 225, 157, 0.678) 30%, rgba(0, 0, 0, 0.1));
+    border-radius: 2.15vh;
+    backdrop-filter: blur(1px);
+    height: fit-content;
+    width: 65vw;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+
+  }
+
+  #searchbutton a:link, #searchbutton a:visited{
+    color: white;
+    text-transform: uppercase;
+
+  }
+
+  #searchbutton {
+    background-color: rgba(208, 64, 48, 1);
+  }
+
+a#navicon {
+    display: none;
+}
+
+a {
+  margin: 0px;
+}
+
+
+
+
+
+/* below 480px */
+
+  @media only screen and (max-width: 480px) {
+    header {
+      font-size: 7vw;
+    }
+
+    .emoji {
+      font-size: 8vw;
+    }
+    #navtainer {
+        width: 60vw;
+    }
+    aside {
+       width: fit-content;
+       height:fit-content;
+
+    }
+
+    a#navicon {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+    }
+
+    aside nav ul{
+        display:none;
+    }
+
+
+
+    a#navicon:hover+ul, aside nav ul:hover {
+        display: block;
+     }
+
+     #mainWindow {
+        width: 95vw;
+     }
+
+
+  }
+
+  /* above 1201 */
+
+  @media only screen and (min-width: 1100px) {
+
+
+
+  aside {
+    height: fit-content;
+
+  }
+
+ #mainWindow {
+    width: clamp(300px, 65vw, 725px);
+  }
+
+   ul {
+    width: clamp(300px, 65vw, 725px);
+  }
+
+  li {
+    font-size: 16px;
+    width: 3px;
+    padding: 11.77px 11.77px 11.77px 26.4px;
+  }
+
+  header {
+    font-size: 55px;
+  }
+
+  .emoji {
+    font-size: 65px;
+  }
+
+
+  }
+
+
+  @media (min-aspect-ratio: 2/1) {
+  /* width is greater than or equal to height */
+
+    body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+.recipe-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin: 0 auto;
+}
+
+
+.recipe-card {
+  background: rgba(255,255,255,0.7);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  overflow-wrap: break-word;
+}
+
+
+.recipe-title {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+
+.recipe-image {
+  display: block;
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+
+details {
+  background: rgba(255,255,255,0.5);
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+details summary {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.recipe-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.delete-btn {
+  background: #d9534f;
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background: #0275d8;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.delete-btn:hover { background: #c9302c; }
+.edit-btn:hover { background: #025aa5; }
+
+ul li, ol li {
+  writing-mode: horizontal-tb;
+  text-orientation: mixed;
+  white-space: normal;
+}
+
+details.recipe-section {
+  background: rgba(255,255,255,0.3);
+  border-radius: 8px;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255,255,255,0.4);
+  backdrop-filter: blur(4px);
+}
+
+details.recipe-section summary {
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 0;
+}
+
+details ul, details ol {
+  padding-left: 1.4rem;
+  margin-top: 0.6rem;
+  font-size: 1rem;
+  line-height: 1.4rem;
+}
+
+details li {
+  margin-bottom: 0.4rem;
+}
+
+.recipe-card {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid rgba(0,0,0,0.15);
+}
+
+.recipe-card ul,
+.recipe-card ol {
+  display: block;
+  list-style-position: outside;
+  list-style-type: disc;
+  margin-left: 1.2rem;
+  padding: 0;
+}
+
+.recipe-card ol {
+  list-style-type: decimal;
+}
+
+.recipe-card li {
+  flex: unset;
+  width: auto;
+  text-align: left;
+  padding: 0.25rem 0;
+  border: none;
+  box-shadow: none;
+  background: none;
+  writing-mode: horizontal-tb !important;
+  white-space: normal !important;
+}
+
+//* Flip card container */
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.recipe-card {
+    width: 820px;       /* ~ index card size */
+    height: 420px;      /* 3x5 ratio */
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border-radius: 10px;
+}
+
+/* POP OUT ON HOVER */
+.recipe-card:hover .card-inner {
+    transform: scale(1.05);
+}
+
+/* CLICK → FLIP */
+.recipe-card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+/* Recipe title full width at top */
+.recipe-title {
+    text-align: center;
+    margin-top: 0;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 24px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Container holding image and ingredients side by side */
+.card-content {
+    display: flex;
+    gap: 10px;           /* space between image and ingredients */
+    align-items: flex-start;
+    margin-top: 5px;
+}
+
+/* Image */
+.recipe-image {
+    width: 35%;           /* image takes ~35% of card width */
+    max-width: 250px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-top: 0;
+    float: none;
+}
+
+/* Ingredients container next to image */
+.ingredients-container {
+    flex: 1;               /* take remaining space next to image */
+    min-width: 0;          /* allows flex children to shrink properly */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;   /* centers the "Ingredients:" title */
+    margin-top: 20px;
+    padding-left: 0;
+}
+
+/* Ingredients title centered above list */
+.ingredients-title {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 18px;
+    text-align: left;
+    margin-top: 0;
+    margin: 0 0 5px 0;
+}
+
+/* Ingredients list in two columns */
+.ingredients-list {
+    display: grid;
+    columns: 2;   /* 2 columns of equal width */
+    column-gap: 2px;                        /* smaller horizontal gap */
+    row-gap: 2px;
+    padding-left: 0;
+    margin: 0;
+    list-style-type: disc;
+    width: 95%;                             /* fit inside container */
+}
+
+/* Optional spacing for layout */
+.ingredients-title,
+.ingredients-list {
+    margin-top: 1px;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    overflow-y: auto;       /* allow vertical scrolling */
+    max-height: 100%;       /* fill the card height */
+    padding-right: 5px;
+}
+
+.card-back h3 {
+    margin-top: 0;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 16px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.card-back ol {
+    font-size: 1rem;
+    line-height: 1.3;
+    padding-left: 18px;
+}
+</style>

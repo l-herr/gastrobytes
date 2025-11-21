@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if recipes %}
+<div class="recipe-grid">
+  {% for r in recipes %}
+  <div class="recipe-card">
+    <h2 class="recipe-title">{{ r.name }}</h2>
+
+    {% if r.image_filename %}
+      <img class="recipe-image" src="{{ url_for('uploaded_file', filename=r.image_filename) }}" alt="{{ r.name }}">
+    {% endif %}
+
+    <details class="recipe-section">
+      <summary>Ingredients</summary>
+      <ul>
+        {% for i in r.ingredients %}
+        <li>{{ i }}</li>
+        {% endfor %}
+      </ul>
+    </details>
+
+    <details class="recipe-section">
+      <summary>Steps</summary>
+      <ol>
+        {% for s in r.steps %}
+        <li>{{ s }}</li>
+        {% endfor %}
+      </ol>
+    </details>
+
+    <div class="recipe-actions">
+      <form action="{{ url_for('delete', rid=r._id) }}" method="post">
+        <button class="delete-btn" type="submit" onclick="return confirm('Delete this recipe?')">Delete</button>
+      </form>
+      <a class="edit-btn" href="{{ url_for('edit', rid=r._id) }}">Edit</a>
+    </div>
+
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+  <p>No recipes yet.</p>
+{% endif %}
+
+{% endblock %}
